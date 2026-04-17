@@ -224,3 +224,21 @@ Built by **Manoj Kumar Kavuri** — Graduate Market & Operations Analyst
 [![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?style=flat&logo=github)](https://github.com/manojkumarkavuri20-a11y)
 
 > *Open to Operations Analyst, Business Analyst, and Market Analyst roles across the UK.*
+
+
+## Getting Started
+
+To run these queries locally you'll need PostgreSQL 13+ installed.
+
+```bash
+# Create the database
+psql -U postgres -c "CREATE DATABASE retail_ops;"
+
+# Import sample inventory data
+psql -U postgres -d retail_ops -c "\copy inventory FROM 'data/sample_inventory.csv' CSV HEADER;"
+
+# Run your first query
+psql -U postgres -d retail_ops -f sql/inventory_accuracy.sql
+```
+
+See `data/data_dictionary.md` for full column definitions. Start with `inventory_accuracy.sql` to get a feel for the data structure, then move on to `stock_turnover.sql` and `shrinkage_analysis.sql`.
