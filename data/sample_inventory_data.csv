@@ -1,0 +1,31 @@
+sku_id,product_name,category,location,aisle,supplier,unit_cost,date_added,lead_time_days,system_quantity
+SKU001,Phone Case Assorted,Electronics Accessories,A,Aisle 7,TechSupply Co,4.99,2025-06-01,5,48
+SKU002,USB-C Cable 2m,Electronics Accessories,A,Aisle 7,TechSupply Co,7.99,2025-06-01,5,32
+SKU003,Power Bank 10000mAh,Electronics Accessories,A,Aisle 7,TechSupply Co,24.99,2025-08-15,7,15
+SKU004,Screen Protector Pack,Electronics Accessories,A,Aisle 7,TechSupply Co,3.49,2025-06-01,5,60
+SKU005,Wireless Earbuds,Electronics Accessories,A,Aisle 7,TechSupply Co,19.99,2025-09-01,7,22
+SKU006,Moisturiser 200ml,Health & Beauty,B,Aisle 3,BeautyDist Ltd,8.99,2025-05-01,4,75
+SKU007,Shampoo 400ml,Health & Beauty,B,Aisle 3,BeautyDist Ltd,4.99,2025-05-01,4,120
+SKU008,Lip Balm Pack x3,Health & Beauty,B,Aisle 3,BeautyDist Ltd,2.99,2025-05-01,4,90
+SKU009,Hand Cream 75ml,Health & Beauty,B,Aisle 3,BeautyDist Ltd,5.49,2025-05-01,4,65
+SKU010,Face Wash 150ml,Health & Beauty,B,Aisle 3,BeautyDist Ltd,6.99,2025-05-01,4,50
+SKU011,Ballpoint Pens x10,Stationery,C,Aisle 5,OfficeGen UK,1.99,2025-04-01,3,200
+SKU012,A4 Notebook,Stationery,C,Aisle 5,OfficeGen UK,3.49,2025-04-01,3,150
+SKU013,Highlighters x6,Stationery,C,Aisle 5,OfficeGen UK,2.99,2025-04-01,3,80
+SKU014,Sticky Notes Pk,Stationery,C,Aisle 5,OfficeGen UK,1.49,2025-04-01,3,180
+SKU015,Scissors,Stationery,C,Aisle 5,OfficeGen UK,4.99,2025-04-01,3,45
+SKU016,Action Figure 30cm,Toys,D,Aisle 9,ToyWorld Ltd,14.99,2025-07-01,6,35
+SKU017,Board Game Classic,Toys,D,Aisle 9,ToyWorld Ltd,19.99,2025-07-01,6,20
+SKU018,Puzzle 500pc,Toys,D,Aisle 9,ToyWorld Ltd,12.99,2025-07-01,6,28
+SKU019,Building Blocks Set,Toys,D,Aisle 9,ToyWorld Ltd,9.99,2025-07-01,6,40
+SKU020,Outdoor Play Set,Toys,D,Aisle 9,ToyWorld Ltd,24.99,2025-07-01,6,18
+SKU021,Garden Trowel,Garden,E,Aisle 12,GardenPro UK,6.99,2025-03-01,5,30
+SKU022,Plant Pots x3,Garden,E,Aisle 12,GardenPro UK,8.99,2025-03-01,5,25
+SKU023,Compost 20L,Garden,E,Aisle 12,GardenPro UK,5.99,2025-03-01,5,40
+SKU024,Garden Gloves,Garden,E,Aisle 12,GardenPro UK,4.99,2025-03-01,5,55
+SKU025,Watering Can 5L,Garden,E,Aisle 12,GardenPro UK,9.99,2025-03-01,5,20
+SKU026,Photo Frame A4,Home Decor,F,Aisle 11,HomeDist Co,7.99,2025-02-01,4,15
+SKU027,Scented Candle,Home Decor,F,Aisle 11,HomeDist Co,6.99,2025-02-01,4,22
+SKU028,Wall Clock Round,Home Decor,F,Aisle 11,HomeDist Co,14.99,2024-11-01,4,8
+SKU029,Cushion Cover 45cm,Home Decor,F,Aisle 11,HomeDist Co,5.99,2024-11-01,4,12
+SKU030,Storage Basket,Home Decor,F,Aisle 11,HomeDist Co,11.99,2024-11-01,4,10
