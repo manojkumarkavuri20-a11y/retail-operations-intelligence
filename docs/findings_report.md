@@ -1,23 +1,18 @@
-# 📊 Findings Report — Retail Operations Intelligence
+# Findings Report — Retail Operations Intelligence
 
-**Project:** Retail Operations Intelligence  
-**Author:** Manoj Kumar Kavuri  
-**Date:** April 2026  
-**Organisation:** The Range (27+ months operational experience)  
+**Portfolio project built for learning purposes using a synthetic dataset. No employer, client or customer data is used.** The findings below are illustrative outputs the SQL queries in `sql/` are designed to produce, informed by general retail operations concepts and 27+ months of frontline experience at The Range — not measured results from any real employer's data.
 
----
+**Author:** Manoj Kumar Kavuri | **Organisation referenced for context:** The Range (27+ months frontline retail experience, part-time)
 
 ## Executive Summary
 
-This report presents findings from a structured SQL-based analysis of retail operations data, covering inventory accuracy, stock turnover, shrinkage, and replenishment patterns. The analysis draws on real operational patterns observed across a high-volume general merchandise retail environment.
+This report walks through the kind of structured analysis the SQL queries in this repo are built to support: inventory accuracy, stock turnover, shrinkage, and replenishment patterns for a general merchandise retail environment.
 
-**Headline result:** Implementing data-driven operations monitoring improved inventory accuracy by **25%**, reduced stockout frequency by **30%**, and identified **£12,000+ in slow-moving stock** eligible for clearance optimisation.
-
----
+Illustrative headline result: this style of data-driven operations monitoring is designed to lift inventory accuracy, cut stockout frequency, and surface real money tied up in slow-moving stock — the kind of outcome these queries are built to make visible, not a specific measured result from a real deployment.
 
 ## 1. Inventory Accuracy
 
-### Findings
+### Illustrative pattern
 
 | Metric | Baseline | After Intervention | Change |
 |--------|---------|-------------------|--------|
@@ -25,27 +20,17 @@ This report presents findings from a structured SQL-based analysis of retail ope
 | Critical Discrepancies (>5 units) | 18% of SKUs | 6% of SKUs | −67% |
 | Average Weekly Variance Value | £1,840 | £620 | −66% |
 
-### Root Causes Identified
+### Root causes the variance query is designed to isolate
 
-1. **Receiving errors (40% of variance)** — Items scanned incorrectly at goods-in, typically during high-volume deliveries on Monday/Tuesday mornings. Solution: double-scan protocol for orders >50 units.
+Four things typically drive this kind of variance. Receiving errors — items scanned incorrectly at goods-in, usually during high-volume deliveries on Monday and Tuesday mornings — tend to be the largest share; a double-scan protocol for orders over 50 units is the natural fix. Returns misprocessing comes next: returned items re-shelved without a system update create phantom stock, which a mandatory system scan on all returns before reshelving closes off. Transfer errors follow, where stock moves between sections without a system update, especially during seasonal resets, and a section transfer form requirement addresses that directly. What's left after those three is genuine shrinkage, covered in Section 3 below.
 
-2. **Returns misprocessing (25% of variance)** — Returned items re-shelved without system update, creating phantom stock. Solution: mandatory system scan on all returns before reshelving.
+### What this points toward
 
-3. **Transfer errors (20% of variance)** — Stock moved between sections without system update, especially seasonal resets. Solution: section transfer form requirement.
-
-4. **Genuine shrinkage (15% of variance)** — See Section 3.
-
-### Recommendations
-
-- Implement weekly cycle counts (20% of SKUs per week, rotating) rather than annual full count
-- Prioritise counts on high-value and high-variance categories
-- Create a variance dashboard visible to shift managers in real time
-
----
+Weekly cycle counts, roughly 20% of SKUs per week on a rotation, would catch these patterns far faster than an annual full count, especially if counts are prioritised on high-value and high-variance categories. A variance dashboard visible to shift managers in real time is the natural next step once the SQL above is running on a schedule.
 
 ## 2. Stock Turnover & Slow Movers
 
-### Findings
+### Illustrative pattern
 
 | Classification | % of SKUs | % of Floor Space | % of Revenue |
 |---------------|-----------|-----------------|-------------|
@@ -54,101 +39,68 @@ This report presents findings from a structured SQL-based analysis of retail ope
 | Slow Movers (1–3) | 28% | 18% | 8% |
 | Dead Stock (<1) | 12% | 7% | 1% |
 
-### Key Insights
+### What the turnover query is designed to surface
 
-1. **Top 20% of SKUs generate 78% of revenue** — Pareto principle is strongly applicable. These fast movers need priority replenishment and prominent floor placement.
+A strong Pareto pattern is typical here: a small share of SKUs generates the large majority of revenue, so fast movers deserve priority replenishment and prominent floor placement. Dead stock tends to tie up real capital in seasonal items that never got cleared after their season — garden furniture in October, Christmas stock in January — and a structured clearance event is the standard response. High days-of-stock tends to concentrate in a handful of categories, home décor and craft being typical candidates for a periodic range review once several months pass with no sale. And a purely historical-average approach to reordering can let a genuinely fast-moving SKU stock out before anyone notices the trend, which is exactly the failure mode this query is built to catch.
 
-2. **Dead stock carries £12,400 in tied-up capital** — Primarily in seasonal items not cleared post-season (garden furniture in October, Christmas items in January). Structured clearance events could recover 30–40% of this value.
+### What this points toward
 
-3. **DSI above 180 days found in Home Décor and Craft categories** — These categories need range review; many items have not sold in 6+ months.
-
-4. **Reorder trigger failures** — 6 fast-moving SKUs experienced stockout during the analysis period due to manual reorder system not tracking velocity accurately.
-
-### Recommendations
-
-- Implement automated reorder alerts when stock drops below `avg_daily_sales × lead_time_days`
-- Schedule quarterly dead stock clearance reviews
-- Reduce range width in low-turnover categories; increase depth in fast movers
-
----
+Automated reorder alerts triggered when stock drops below `avg_daily_sales × lead_time_days`, a quarterly dead stock clearance review, and a deliberate narrowing of range width in low-turnover categories — with more depth where the fast movers are — would all follow directly from this analysis.
 
 ## 3. Shrinkage Analysis
 
-### Findings by Category
+### Illustrative pattern by category
 
-| Category | Shrinkage Rate | Flag | Action |
+| Category | Shrinkage Rate | Flag | Suggested Action |
 |----------|---------------|------|--------|
-| Electronics Accessories | 4.2% | 🔴 Critical | Security case + weekly count |
-| Health & Beauty | 3.1% | 🔴 Critical | End-aisle placement, locked display |
-| Stationery | 2.4% | 🟡 Investigate | Bi-weekly count |
-| Toys | 1.8% | 🟡 Monitor | Monthly count |
-| Garden | 0.6% | 🟢 Acceptable | Quarterly count |
-| Furniture | 0.3% | 🟢 Acceptable | Quarterly count |
+| Electronics Accessories | 4.2% | Critical | Security case + weekly count |
+| Health & Beauty | 3.1% | Critical | End-aisle placement, locked display |
+| Stationery | 2.4% | Investigate | Bi-weekly count |
+| Toys | 1.8% | Monitor | Monthly count |
+| Garden | 0.6% | Acceptable | Quarterly count |
+| Home Decor | 0.3% | Acceptable | Quarterly count |
 
-### Key Insights
+### What the shrinkage query is designed to surface
 
-1. **High-value accessories (electronics, beauty) have 3–5x higher shrinkage** than bulky or low-price categories — a pattern consistent across general merchandise retail.
+Small, high-value items tend to carry disproportionate shrinkage — electronics and beauty categories typically run at several times the rate of bulky or low-price categories, a pattern common across general merchandise retail. There's usually a seasonal peak around Q4, when higher footfall and busier staff coincide with a rise in theft risk, which argues for tighter floor coverage in that window specifically. Not all of the variance is theft, either: a meaningful share can trace back to supplier under-delivery rather than in-store loss, which is exactly why `shrinkage_detection.sql` includes a dedicated supplier delivery variance query rather than treating every book-vs-physical gap as shrinkage. And loss tends to concentrate in a small number of aisles — a handful of high-value aisles can account for the majority of shrinkage value despite holding a small minority of total SKUs.
 
-2. **Shrinkage peaks in Q4 (October–December)** — customer volumes are higher, staff are busier, and theft risk rises. Enhanced floor coverage and targeted security protocols are recommended during this period.
+### What this points toward
 
-3. **Supplier shortfall accounts for ~18% of book-vs-physical variance** — this is not theft but delivery under-counting, particularly from one supplier with a consistent 2.3% shortfall rate.
-
-4. **Aisle 7 (Electronics) and Aisle 3 (Health & Beauty) account for 61% of total shrinkage value** despite holding only 15% of SKUs.
-
-### Recommendations
-
-- Install security casing or keeper locks on electronics accessories above £10 unit cost
-- Raise supplier delivery variance formally with the 2 highest-shortfall suppliers
-- Implement enhanced counts (daily spot counts) for shrinkage-flagged aisles during peak season
-
----
+Security casing or keeper locks above a chosen unit cost threshold, a formal conversation with the highest-shortfall suppliers using the delivery variance query as evidence, and daily spot counts on flagged aisles during peak season are the natural responses.
 
 ## 4. Replenishment & Stockout Analysis
 
-### Findings
+### Illustrative pattern
 
 | Metric | Finding |
 |--------|--------|
-| Stockout events (90-day period) | 43 instances across 31 SKUs |
-| Weekend stockout rate | 2.4x higher than weekday rate |
-| Most common cause | Replenishment not triggered before weekend |
-| Average duration of stockout | 1.8 days |
-| Estimated lost revenue per stockout | £34–£180 depending on category |
+| Stockout events (90-day period) | dozens of instances across a few dozen SKUs |
+| Weekend stockout rate | markedly higher than weekday rate |
+| Most common cause | replenishment not triggered before the weekend |
+| Average duration of stockout | under two days |
+| Estimated lost revenue per stockout | tens to low hundreds of pounds, depending on category |
 
-### Key Insights
+### What the reorder alert query is designed to surface
 
-1. **Replenishment cadence doesn’t align with demand pattern** — Most replenishment happens Thursday/Friday based on delivery schedules, but fast movers sell out by Saturday afternoon.
+Replenishment cadence often lags demand: if most replenishment happens Thursday or Friday on a fixed delivery schedule, fast movers can sell out by Saturday afternoon regardless. Repeat offenders are a sign the reorder point itself is wrong rather than bad luck — a SKU that stocks out more than once in 90 days needs a structural fix, not a one-off top-up. And static historical-average ordering tends to under-serve seasonal or promotional items specifically, since those are exactly the SKUs a simple average-based system will systematically under-order.
 
-2. **31 SKUs experienced multiple stockouts** — These are systemic failures, not one-offs. They need permanent reorder point adjustments, not reactive fixes.
+### What this points toward
 
-3. **Top 5 frequently stocked-out SKUs** represent popular seasonal or promotional items that consistently under-perform in the ordering system due to static historical-average ordering.
+Shifting the replenishment check to Wednesday evening for weekend-critical fast movers, flagging any SKU with three or more stockouts in 90 days for a permanent reorder point uplift, and logging stockouts as part of the daily close-of-play checklist would all follow from this query.
 
-### Recommendations
+## 5. Summary of Illustrative Business Impact
 
-- Shift replenishment check to Wednesday evening for weekend-critical fast movers
-- Flag SKUs with 3+ stockouts in 90 days for permanent reorder point uplift
-- Build a simple stockout log into daily close-of-play checklist
-
----
-
-## 5. Summary of Business Impact
-
-| Area | Problem Identified | Solution Applied | Quantified Outcome |
+| Area | Problem Identified | Solution Applied | Illustrative Outcome |
 |------|-------------------|-----------------|-------------------|
-| Inventory Accuracy | 72% accuracy, high variance | Variance SQL monitoring + cycle counts | +25% accuracy improvement |
-| Dead Stock | £12,400 tied up in slow movers | DSI analysis + clearance scheduling | Identified & actioned £12k+ |
-| Shrinkage | No category-level visibility | Shrinkage detection SQL by category | Targeted security applied to top-2 categories |
-| Stockouts | 43 events in 90 days | Reorder point analysis | Reduced stockout frequency by 30% |
-| Supplier Variance | Undetected shortfalls | Supplier delivery variance query | 2 suppliers formally challenged |
-
----
+| Inventory Accuracy | Low accuracy, high variance | Variance SQL monitoring + cycle counts | Meaningful accuracy improvement |
+| Dead Stock | Capital tied up in slow movers | DSI analysis + clearance scheduling | Slow-moving stock value identified and actioned |
+| Shrinkage | No category-level visibility | Shrinkage detection SQL by category | Targeted security applied to the worst categories |
+| Stockouts | Frequent, clustered events | Reorder point analysis | Reduced stockout frequency |
+| Supplier Variance | Undetected shortfalls | Supplier delivery variance query | Shortfall suppliers identified for a formal conversation |
 
 ## 6. Next Steps
 
-- [ ] Build a Power BI dashboard to surface these KPIs for daily shift manager visibility
-- [ ] Automate weekly accuracy report from SQL to email distribution
-- [ ] Expand analysis to include staff productivity KPIs (units processed per hour, error rates by operator)
-- [ ] Integrate with EPoS system for real-time velocity tracking
+This report and the SQL behind it point to four natural extensions: building a Power BI dashboard so these KPIs are visible to shift managers daily, automating a weekly accuracy report straight from SQL to email, extending the analysis to staff productivity KPIs such as units processed per hour and error rates by operator, and integrating with a live EPoS feed for real-time velocity tracking instead of a periodic snapshot.
 
 ---
 
