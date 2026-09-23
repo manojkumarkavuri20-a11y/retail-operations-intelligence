@@ -2,7 +2,7 @@
 
 **Portfolio project built for learning purposes using a synthetic dataset. No employer, client or customer data is used.**
 
-**SQL-powered retail operations analytics system** — inventory accuracy tracking, stock turnover analysis, shrinkage detection, and reorder alerting. Built with a synthetic inventory dataset, modelled on retail operations concepts I have practised during 27+ months of frontline retail experience at The Range.
+**SQL retail operations analytics** - inventory accuracy tracking, stock turnover analysis, shrinkage detection, and reorder alerting. Built with a synthetic inventory dataset, modelled on retail operations concepts I have practised during 27+ months of frontline retail experience at The Range.
 
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Excel](https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
@@ -13,9 +13,9 @@
 
 ## Business Problem
 
-Retail operations teams routinely face three critical challenges. Inventory discrepancies happen when stock levels in the system don't match physical counts, leading to phantom stock and lost sales. Slow-moving SKUs tie up floor space and working capital as dead stock. And without structured analysis, shrinkage blindspots let theft, damage, and supplier shortages go undetected.
+Retail operations teams run into the same problems repeatedly. Inventory discrepancies happen when stock levels in the system don't match physical counts, leading to phantom stock and lost sales. Slow-moving SKUs tie up floor space and working capital as dead stock. And without structured analysis, shrinkage from theft, damage, and supplier shortages goes undetected.
 
-This project delivers a data-driven operations intelligence layer using SQL to surface these issues before they impact profitability, built as a self-initiated exercise to practise the kind of analysis that supports 100+ daily customer transactions and stock operations in a high-volume retail environment.
+This project is a SQL analytics layer for surfacing those issues before they impact profitability, built as a self-initiated exercise to practise the kind of analysis that supports 100+ daily customer transactions and stock operations in a high-volume retail environment.
 
 ---
 
@@ -38,17 +38,17 @@ This project delivers a data-driven operations intelligence layer using SQL to s
 retail-operations-intelligence/
 
 sql/
-  inventory_accuracy.sql        Stock count vs system comparison
-  stock_turnover_analysis.sql   Turnover rate and DSI by SKU
-  shrinkage_detection.sql       Loss analysis by category
-  reorder_alert_report.sql      Reorder point and safety stock alerts
+inventory_accuracy.sql Stock count vs system comparison
+stock_turnover_analysis.sql Turnover rate and DSI by SKU
+shrinkage_detection.sql Loss analysis by category
+reorder_alert_report.sql Reorder point and safety stock alerts
 
 data/
-  sample_inventory_data.csv     Synthetic sample dataset
+sample_inventory_data.csv Synthetic sample dataset
 
 docs/
-  data_dictionary.md            Field definitions and schema notes
-  findings_report.md            Illustrative insights and recommendations
+data_dictionary.md Field definitions and schema notes
+findings_report.md Illustrative insights and recommendations
 
 README.md
 ```
@@ -169,13 +169,13 @@ ORDER BY shrinkage_value_gbp DESC;
 
 ## Illustrative Findings from Synthetic Data
 
-These are illustrative patterns the queries are designed to surface, generated from the synthetic dataset, not measured results from a real store. Receiving discrepancies can account for a large share of inventory variance, pointing to scanning errors at goods-in rather than theft. High-value accessories such as phone cases and small gadgets can show a materially higher shrinkage rate than bulky items. Weekend stockouts can be more common than weekday stockouts due to reduced replenishment staffing. The top 20% of SKUs can generate a disproportionate share of revenue, a Pareto pattern common across general retail. And post-Christmas returns in January can create a spike in processing workload that requires reallocation planning.
+These are patterns the queries are designed to surface, generated from the synthetic dataset - not measured results from a real store. Receiving discrepancies can account for a large share of inventory variance, pointing to scanning errors at goods-in rather than theft. High-value accessories such as phone cases and small gadgets can show a materially higher shrinkage rate than bulky items. Weekend stockouts can be more common than weekday stockouts due to reduced replenishment staffing. The top 20% of SKUs can generate a disproportionate share of revenue, a pattern common across general retail. And post-Christmas returns in January can create a spike in processing workload that requires reallocation planning.
 
 ---
 
 ## Illustrative Business Impact
 
-This table shows the kind of before/after comparison the queries are designed to support, based on the synthetic dataset, not real, measured results from an employer.
+This table shows the kind of before/after comparison the queries are designed to support, based on the synthetic dataset - not real, measured results from an employer.
 
 | Area | Problem | Solution | Illustrative Outcome |
 |------|---------|----------|----------|
@@ -194,13 +194,15 @@ PostgreSQL is used for the core SQL analytics, with the queries designed to run 
 
 ## Related Projects
 
-[UK Retail Sales & Category Performance Analysis](https://github.com/manojkumarkavuri20-a11y/uk-retail-footfall-analysis) covers 109 months of ONS data across 6 analytical views. [Power BI Marketing KPI Dashboard](https://github.com/manojkumarkavuri20-a11y/powerbi-marketing-kpi-dashboard) covers campaign ROI analytics. [SQL Portfolio](https://github.com/manojkumarkavuri20-a11y/sql-portfolio) covers advanced SQL for business analytics.
+- [UK Retail Sales & Category Performance Analysis](https://github.com/manojkumarkavuri20-a11y/uk-retail-footfall-analysis) - 109 months of ONS data across 6 analytical views
+- [Power BI Marketing KPI Dashboard](https://github.com/manojkumarkavuri20-a11y/powerbi-marketing-kpi-dashboard) - campaign ROI analytics
+- [SQL Portfolio](https://github.com/manojkumarkavuri20-a11y/sql-portfolio) - advanced SQL for business analytics
 
 ---
 
 ## About
 
-Built by **Manoj Kumar Kavuri** — Graduate Market & Operations Analyst, based in Bracknell, UK, with a background of 27+ months in frontline retail operations (The Range, part-time).
+Built by **Manoj Kumar Kavuri** - Graduate Market & Operations Analyst, based in Bracknell, UK, with a background of 27+ months in frontline retail operations (The Range, part-time).
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/manojkumarkavuri/)
 [![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?style=flat&logo=github)](https://github.com/manojkumarkavuri20-a11y)
